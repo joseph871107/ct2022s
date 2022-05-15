@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            @import "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap";*{padding:0;margin:0;box-sizing:border-box}.main{position:relative;width:100vw;height:100vh;background-color:#fff;opacity:.9;font-family:'Roboto Condensed',sans-serif}.main .bg{width:100vw;height:100vh;position:absolute;z-index:-99}.main .bg video{height:100%;width:100%;object-fit:cover}.main .head{padding-top:2rem;height:10vh;text-align:center;font-size:80px;font-weight:700;color:#fff;display:flex;justify-content:center;align-items:center}.main .head span{border-bottom:solid;border-width:1px;width:50%}.main .inner{width:100vw;height:90vh;display:flex;justify-content:center;align-items:center}.main .inner .item{background-color:#000;opacity:.5;color:#fff;height:25vw;width:25vw;padding:2rem;margin:0 10px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;cursor:pointer}.main .inner .item:after{content:"";border-style:solid;border-width:1px;position:absolute;width:100%;height:100%;transition:transform .5s ease-in-out}.main .inner .item:hover{opacity:1}.main .inner .item:hover:after{padding:2.5rem;transform-origin:center;transform:rotate(135deg)}.main .inner .item:hover .img-container{transform:scale(1.5,1.5)}.main .inner .item .img-container{height:18vw;width:18vw;border-radius:50%;border-style:solid;border-width:10px;border-color:rgba(129,165,165,0.692);overflow:hidden;transition:transform .5s}.main .inner .item .img-container img{height:100%;width:100%;object-fit:contain}.main .inner .item .text{font-size:1.5rem;margin-top:1rem}
+        </style>
+
+    </head>
+    <body>
+        <div class="main">
+            <div class="bg">
+                <video autoplay preload="auto" loop>
+                    <source src="./bg.webm">
+                </video>
+            </div>
+            <div class="head">
+                <span> Hw1 Links </span>
+            </div>
+            <div class="inner">
+                <div class="item" data-href="./SourceHanSerif-Heavy.otf">
+                    <div class="img-container">
+                        <img style="filter: invert(1);" src="otf.svg">
+                    </div>
+                    <div class="text"> Original OTF Files </div>
+                </div>
+                <div class="item" data-href="https://colab.research.google.com/drive/1Z9DH7EIgKZM0R9AnUd80kLcoOND8VLzv">
+                    <div class="img-container">
+                        <img src="colab.png">
+                    </div>
+                    <div class="text"> Colab iPython Script </div>
+                </div>
+                <div class="item" data-href="./SourceHanSerif-Heavy.ttf">
+                    <div class="img-container">
+                        <img src="ttf.svg">
+                    </div>
+                    <div class="text"> Converted TTF Files </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.onload = function(){
+				var items = document.getElementsByClassName('item');
+				
+				for(var i =0; i<items.length; i++){
+					items[i].addEventListener('click', function(evt){
+                        window.open(evt.target.dataset.href, "_blank");
+                    });
+				}
+            };
+        </script>
+    </body>
+</html>
+
