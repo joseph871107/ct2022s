@@ -14,22 +14,21 @@
         }
         
         .main {
-            font-family: 'MyHelvetica';
-            /* 改成自己的 Simple & Medium Baseline 字型檔 */
-            font-weight: 900;
-        }
-        
-        .poems {
-            font-family: 'MyHelvetica';
-            /* Strong Baseline 字型檔 */
+            font-family: 'JosephFont';
         }
         
         @font-face {
-            font-family: MyHelvetica;
-            src: local("cjkFonts 全瀨體"), url(JosephFont.ttf);
-            /* 改成自己的 Simple & Medium Baseline 字型檔 */
-            /* src: local("cjkFonts_allseto_v1.11"), url(cjkFonts_allseto_v1.11.ttf); Strong Baseline 字型檔 */
-            font-weight: bold;
+            font-family: JosephFont;
+            src: url(JosephFont.ttf);
+        }
+        
+        .poems {
+            font-family: 'StrongFont';
+        }
+        
+        @font-face {
+            font-family: StrongFont;
+            src: url(https://raw.githubusercontent.com/Circle472/ct2022s/main/hw04/StrongFont.ttf), url(https://raw.githubusercontent.com/Circle472/ct2022s/main/hw04/CircleFont.ttf), url(JosephFont.ttf);
         }
         
         a:visited {
