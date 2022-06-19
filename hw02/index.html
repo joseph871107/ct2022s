@@ -3,432 +3,412 @@
 <!--  -->
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-	<style type="text/css">
-		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300&family=Noto+Serif+JP:wght@200&display=swap');
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300&family=Noto+Serif+JP:wght@200&display=swap');
+        body {
+            font-size: 18pt;
+        }
+        
+        div {
+            border: black solid 1px;
+            margin: 10px;
+            padding: 10px;
+        }
+        
+        svg {
+            border: red solid 1px;
+            /*margin: 10px;*/
+            font-size: 36pt;
+        }
+        
+        li {
+            font-size: 12pt;
+            font-family: 'Noto Sans Mono', 'Noto Serif JP';
+        }
+        
+        .selected {
+            stroke: red;
+            stroke-width: 5px;
+        }
+        
+        .font-svg {
+            height: 100px;
+            width: 100px;
+        }
+    </style>
 
-		body {
-			font-size: 18pt;
-		}
 
-		div {
-			border: black solid 1px;
-			margin: 10px;
-			padding: 10px;
-		}
-
-		svg {
-			border: red solid 1px;
-			/*margin: 10px;*/
-			font-size: 36pt;
-		}
-
-		li {
-			font-size: 12pt;
-			font-family: 'Noto Sans Mono', 'Noto Serif JP';
-		}
-
-		.selected {
-			stroke: red;
-			stroke-width: 5px;
-		}
-
-		.font-svg {
-			height: 100px;
-			width: 100px;
-		}
-	</style>
-
-	
-	<!-- <script src="./d3.v7.min.js" charset="utf-8"></script> -->
+    <!-- <script src="./d3.v7.min.js" charset="utf-8"></script> -->
 
 </head>
 <!--  -->
 
 <body>
-	<div id="score-btn"></div>
-	<hr>
+    <div id="score-btn"></div>
+    <hr>
 
-	<a href="https://en.wikipedia.org/wiki/Plane_(Unicode)">Unicode 字元平面 Plane</a>
+    <a href="https://en.wikipedia.org/wiki/Plane_(Unicode)">Unicode 字元平面 Plane</a>
 
-	<p>
-		Unicode 分為 17 平面（Plane），每平面擁有 65,536（2^16）個代碼點。
-	</p>
+    <p>
+        Unicode 分為 17 平面（Plane），每平面擁有 65,536（2^16）個代碼點。
+    </p>
 
-	<ol start="0">
-		<li>U+000000 - U+00FFFF 基本多文種平面 Basic Multilingual Plane (BMP) </li>
-		<li>U+010000 - U+01FFFF 第一輔助平面 (多文種補充平面 ) Supplementary Multilingual Plane (SMP)</li>
-		<li>U+020000 - U+02FFFF 第二輔助平面 (表意文字補充平面) Supplementary Ideographic Plane (SIP)</li>
-		<li>U+030000 - U+03FFFF 第三輔助平面 (表意文字第三平面) Tertiary Ideographic Plane (TIP)</li>
-		<li>U+040000 - U+05FFFF（尚未使用）</li>
-		<li>U+050000 - U+06FFFF（尚未使用）</li>
-		<li>U+060000 - U+07FFFF（尚未使用）</li>
-		<li>U+070000 - U+08FFFF（尚未使用）</li>
-		<li>U+080000 - U+09FFFF（尚未使用）</li>
-		<li>U+090000 - U+0AFFFF（尚未使用）</li>
-		<li>U+0A0000 - U+0BFFFF（尚未使用）</li>
-		<li>U+0B0000 - U+0CFFFF（尚未使用）</li>
-		<li>U+0C0000 - U+0DFFFF（尚未使用）</li>
-		<li>U+040000 - U+0DFFFF（尚未使用）</li>
-		<li>U+0E0000 - U+0EFFFF 特別用途補充平面 Supplementary Special-purpose Plane (SSP)</li>
-		<li>U+0F0000 - U+0FFFFF 保留作為私人使用區（A區）[1] Private Use Area-A (PUA-A)</li>
-		<li>U+100000 - U+10FFFF 保留作為私人使用區（B區）[1] Private Use Area-B (PUA-B)</li>
-	</ol>
+    <ol start="0">
+        <li>U+000000 - U+00FFFF 基本多文種平面 Basic Multilingual Plane (BMP) </li>
+        <li>U+010000 - U+01FFFF 第一輔助平面 (多文種補充平面 ) Supplementary Multilingual Plane (SMP)</li>
+        <li>U+020000 - U+02FFFF 第二輔助平面 (表意文字補充平面) Supplementary Ideographic Plane (SIP)</li>
+        <li>U+030000 - U+03FFFF 第三輔助平面 (表意文字第三平面) Tertiary Ideographic Plane (TIP)</li>
+        <li>U+040000 - U+05FFFF（尚未使用）</li>
+        <li>U+050000 - U+06FFFF（尚未使用）</li>
+        <li>U+060000 - U+07FFFF（尚未使用）</li>
+        <li>U+070000 - U+08FFFF（尚未使用）</li>
+        <li>U+080000 - U+09FFFF（尚未使用）</li>
+        <li>U+090000 - U+0AFFFF（尚未使用）</li>
+        <li>U+0A0000 - U+0BFFFF（尚未使用）</li>
+        <li>U+0B0000 - U+0CFFFF（尚未使用）</li>
+        <li>U+0C0000 - U+0DFFFF（尚未使用）</li>
+        <li>U+040000 - U+0DFFFF（尚未使用）</li>
+        <li>U+0E0000 - U+0EFFFF 特別用途補充平面 Supplementary Special-purpose Plane (SSP)</li>
+        <li>U+0F0000 - U+0FFFFF 保留作為私人使用區（A區）[1] Private Use Area-A (PUA-A)</li>
+        <li>U+100000 - U+10FFFF 保留作為私人使用區（B區）[1] Private Use Area-B (PUA-B)</li>
+    </ol>
 
-	<hr>
+    <hr>
 
-	<div id="planes"></div>
-	<!-- <a id="download" href="#">Download SVG</button> -->
+    <div id="planes"></div>
+    <!-- <a id="download" href="#">Download SVG</button> -->
 
-	<hr>
+    <hr>
 
-	<div id="plane_now">BMP, plane_select = 0</div>
+    <div id="plane_now">BMP, plane_select = 0</div>
 
-	<hr>
+    <hr>
 
-	<div id="plane"></div>
+    <div id="plane"></div>
 
-	<hr>
+    <hr>
 
-	<div>
-		<div>
-			<input type="file" id="select-font">
-		</div>
-		<div>
-			<a href="javascript:void(0)" id="download-svg"> Download </a>
-		</div>
-		<div>
-			<label for="point-switch"> Hide Points </label>
-			<input type="checkbox" id="point-switch" checked>
-		</div>
-		<div id="svg_image" style="display:inline-block;height:15rem;width:10%;"></div>
-		<div style="display:inline-block;height:15rem;width:70%;float:right;">
-			<textarea id="svg_text" style="height:100%;width: 100%;"></textarea>
-		</div>
-		<div style="clear:both;padding:0;border:0;"></div>
-	</div>
-
-
-	<hr>
-	Surrogates:
-	<ul>
-		<li>High Surrogates (D800–DB7F) 896</li>
-		<li>High Private Use Surrogates (DB80–DBFF) 128</li>
-		<li>Low Surrogates (DC00–DFFF) 1024</li>
-	</ul>
-
-	Since high surrogate values in the range DB80–DBFF always produce values in the Private Use planes, the high
-	surrogate range can be further divided into (normal) high surrogates (D800–DB7F) and "high private use surrogates"
-	(DB80–DBFF).
-	<hr>
-
-	<!-- d3.js library -->
-	<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
-
-	<!-- opentype library -->
-	<script src="./opentype.min.js"></script>
-
-	<!-- Path function from opentype library -->
-	<script src="./MyPath.js"></script>
-
-	<!-- score outputer -->
-	<script src="https://cdn.jsdelivr.net/gh/t109598105/ScoreOutputer@latest/dist/scoreoutputer.min.js"></script>
+    <div>
+        <div>
+            <input type="file" id="select-font">
+        </div>
+        <div>
+            <a href="javascript:void(0)" id="download-svg"> Download </a>
+        </div>
+        <div>
+            <label for="point-switch"> Hide Points </label>
+            <input type="checkbox" id="point-switch" checked>
+        </div>
+        <div id="svg_image" style="display:inline-block;height:15rem;width:10%;"></div>
+        <div style="display:inline-block;height:15rem;width:70%;float:right;">
+            <textarea id="svg_text" style="height:100%;width: 100%;"></textarea>
+        </div>
+        <div style="clear:both;padding:0;border:0;"></div>
+    </div>
 
 
-	<script type="text/javascript">
-		/** Global variables */
-		var openTypeFont = null;
-		var svgHTML = '';
-		var plane_select = 0;
-		var code_point = 0;
+    <hr> Surrogates:
+    <ul>
+        <li>High Surrogates (D800–DB7F) 896</li>
+        <li>High Private Use Surrogates (DB80–DBFF) 128</li>
+        <li>Low Surrogates (DC00–DFFF) 1024</li>
+    </ul>
 
-		var unicode = ['BMP', 'SMP', 'SIP', 'TIP', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', 'SSP', 'PUA-A', 'PUA-B'];
+    Since high surrogate values in the range DB80–DBFF always produce values in the Private Use planes, the high surrogate range can be further divided into (normal) high surrogates (D800–DB7F) and "high private use surrogates" (DB80–DBFF).
+    <hr>
 
-		var tooltip_planes_id = 'tooltip_planes';
-		var plane_now_id = 'plane_now';
-		var plane_id = 'plane';
+    <!-- d3.js library -->
+    <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 
-		/** Your code goes here */
-		/***/
+    <!-- opentype library -->
+    <script src="./opentype.min.js"></script>
+
+    <!-- Path function from opentype library -->
+    <script src="./MyPath.js"></script>
+
+    <!-- score outputer -->
+    <script src="https://cdn.jsdelivr.net/gh/t109598105/ScoreOutputer@latest/dist/scoreoutputer.min.js"></script>
 
 
-		/** create font svg function */
-		function create_font_svg(){
-			console.log('start create_font_svg()...');
+    <script type="text/javascript">
+        /** Global variables */
+        var openTypeFont = null;
+        var svgHTML = '';
+        var plane_select = 0;
+        var code_point = 0;
+
+        var unicode = ['BMP', 'SMP', 'SIP', 'TIP', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', 'SSP', 'PUA-A', 'PUA-B'];
+
+        var tooltip_planes_id = 'tooltip_planes';
+        var plane_now_id = 'plane_now';
+        var plane_id = 'plane';
+
+        /** Your code goes here */
+        /***/
+
+
+        /** create font svg function */
+        function create_font_svg() {
+            console.log('start create_font_svg()...');
 
             /** Your code goes here */
-			if(openTypeFont !== null){
+            if (openTypeFont !== null) {
                 d3.select('#svg_image')
-                    .html('')
-                ;
- 
+                    .html('');
+
                 d3.select('#svg_text')
-                    .html('')
-                ;
- 
+                    .html('');
+
                 var str = String.fromCodePoint(code_point);
                 var font = openTypeFont;
- 
+
                 var glyph = font.stringToGlyphs(str)[0];
- 
-                var mkPath = function(commands, height){
+
+                var mkPath = function(commands, height) {
                     var p = new MyPath();
                     var c = [];
                     for (let i = 0; i < commands.length; i += 1) {
                         const cmd = commands[i];
                         if (cmd.type === 'M') {
-                            p.moveTo(cmd.x, height-cmd.y);
-                            c.push([cmd.x, height-cmd.y]);
+                            p.moveTo(cmd.x, height - cmd.y);
+                            c.push([cmd.x, height - cmd.y]);
                         } else if (cmd.type === 'L') {
-                            p.lineTo(cmd.x, height-cmd.y);
-                            c.push([cmd.x, height-cmd.y]);
+                            p.lineTo(cmd.x, height - cmd.y);
+                            c.push([cmd.x, height - cmd.y]);
                         } else if (cmd.type === 'Q') {
-                            p.quadraticCurveTo(cmd.x1, height-cmd.y1, cmd.x, height-cmd.y);
-                            c.push([cmd.x1, height-cmd.y1]);
-                            c.push([cmd.x, height-cmd.y]);
+                            p.quadraticCurveTo(cmd.x1, height - cmd.y1, cmd.x, height - cmd.y);
+                            c.push([cmd.x1, height - cmd.y1]);
+                            c.push([cmd.x, height - cmd.y]);
                         } else if (cmd.type === 'C') {
-                            p.curveTo(cmd.x1, height-cmd.y1,cmd.x2,height-cmd.y2,cmd.x, height-cmd.y);
-                            c.push([cmd.x1, height-cmd.y1]);
-                            c.push([cmd.x2,height-cmd.y2]);
-                            c.push([cmd.x, height-cmd.y]);
+                            p.curveTo(cmd.x1, height - cmd.y1, cmd.x2, height - cmd.y2, cmd.x, height - cmd.y);
+                            c.push([cmd.x1, height - cmd.y1]);
+                            c.push([cmd.x2, height - cmd.y2]);
+                            c.push([cmd.x, height - cmd.y]);
                         } else if (cmd.type === 'Z') {
                             p.closePath();
                         }
                     }
-                    return [ p, c ];
+                    return [p, c];
                 };
- 
+
                 var svgPathObj = mkPath(glyph.path.commands, font.unitsPerEm);
                 var tmpPath = svgPathObj[0];
- 
+
                 var svg3 = d3.select('#svg_image')
-                                .append('svg')
-                                .attr("xmlns", 'http://www.w3.org/2000/svg')
-                                .attr("xmlns:svg", 'http://www.w3.org/2000/svg')
-                                .attr("xmlns:xlink", 'http://www.w3.org/1999/xlink')
-                                .attr('viewBox', [0, -glyph.yMin, font.unitsPerEm, font.unitsPerEm].join(' '))
-                ;
- 
+                    .append('svg')
+                    .attr("xmlns", 'http://www.w3.org/2000/svg')
+                    .attr("xmlns:svg", 'http://www.w3.org/2000/svg')
+                    .attr("xmlns:xlink", 'http://www.w3.org/1999/xlink')
+                    .attr('viewBox', [0, -glyph.yMin, font.unitsPerEm, font.unitsPerEm].join(' '));
+
                 svg3.append('path')
                     .attr('d', tmpPath.toPathData())
-                    .attr('class', 'font-svg')
-                ;
-				console.log(tmpPath)
- 
-				svg3.append('g')
-					.attr("id", "point-graph")
-					.attr("display", "")
-					.html(function() {
-						let g = '';
-						var create_circle = (x, y)=> {
-							return `<circle stroke="black" fill="red" r="30" cx="${x}" cy="${y}"></circle>`
-						}
+                    .attr('class', 'font-svg');
+                console.log(tmpPath)
 
-						for (let i = 0; i < tmpPath.commands.length; i++) {
-							const cmd = tmpPath.commands[i];
-							if ('x1' in cmd && 'y1' in cmd){
-								g += create_circle(cmd.x1, cmd.y1)
-							}
-							if ('x' in cmd && 'y' in cmd){
-								g += create_circle(cmd.x, cmd.y)
-							}
-						}
-						return g
-					})
-				;
- 
+                svg3.append('g')
+                    .attr("id", "point-graph")
+                    .attr("display", "")
+                    .html(function() {
+                        let g = '';
+                        var create_circle = (x, y) => {
+                            return `<circle stroke="black" fill="red" r="30" cx="${x}" cy="${y}"></circle>`
+                        }
+
+                        for (let i = 0; i < tmpPath.commands.length; i++) {
+                            const cmd = tmpPath.commands[i];
+                            if ('x1' in cmd && 'y1' in cmd) {
+                                g += create_circle(cmd.x1, cmd.y1)
+                            }
+                            if ('x' in cmd && 'y' in cmd) {
+                                g += create_circle(cmd.x, cmd.y)
+                            }
+                        }
+                        return g
+                    });
+
                 d3.select('#svg_text')
-                    .html(svg3.node().outerHTML)
-                ;
- 
+                    .html(svg3.node().outerHTML);
+
                 svgHTML = svg3.node().outerHTML;
             }
 
-			console.log('end create_font_svg()...');
-		};
-		/***/
+            console.log('end create_font_svg()...');
+        };
+        /***/
 
 
-		/** build plane function */
-		function build_plane(){
-			console.log('start build_plane()...');
-			
+        /** build plane function */
+        function build_plane() {
+            console.log('start build_plane()...');
+
             /** Your code goes here */
-			var dataset = new Array(2**16).fill();
-			
-			var w = 1024;
-			var h = 1024;
+            var dataset = new Array(2 ** 16).fill();
 
-			var svg2 = d3.select(`#${plane_id}`) // body
-				.append("svg")
-				.attr("id", 'svg')
-				.attr("width", w)
-				.attr("height", h)
-				.attr("xmlns", 'http://www.w3.org/2000/svg')
-				.attr("xmlns:svg", 'http://www.w3.org/2000/svg')
-				.attr("xmlns:xlink", 'http://www.w3.org/1999/xlink')
-			;
+            var w = 1024;
+            var h = 1024;
 
-			svg2.selectAll("rect")
-				.data(dataset)
-				.enter()
-				.append("rect")
-				.attr("x", function(d, i) {
-					return (i % 256) * 4;
-				})
-				.attr("y", function(d, i) {
-					return Math.floor(i / 256) * 4;
-				})
-				.attr("width", 8)
-				.attr("height", 8)
-				.attr("fill", function(d, i) {
-					var value = 'rgb(' 
-							+ (0).toString() 
-							+ ', '
-							+ (255 - Math.floor(i / 256) * 2).toString() 
-							+ ', '  
-							+ ( 255 - (i % 256) ).toString() 
-							+ ')'
-					;
+            var svg2 = d3.select(`#${plane_id}`) // body
+                .append("svg")
+                .attr("id", 'svg')
+                .attr("width", w)
+                .attr("height", h)
+                .attr("xmlns", 'http://www.w3.org/2000/svg')
+                .attr("xmlns:svg", 'http://www.w3.org/2000/svg')
+                .attr("xmlns:xlink", 'http://www.w3.org/1999/xlink');
 
-					var cp = plane_select * 65536 + i;
+            svg2.selectAll("rect")
+                .data(dataset)
+                .enter()
+                .append("rect")
+                .attr("x", function(d, i) {
+                    return (i % 256) * 4;
+                })
+                .attr("y", function(d, i) {
+                    return Math.floor(i / 256) * 4;
+                })
+                .attr("width", 8)
+                .attr("height", 8)
+                .attr("fill", function(d, i) {
+                    var value = 'rgb(' +
+                        (0).toString() +
+                        ', ' +
+                        (255 - Math.floor(i / 256) * 2).toString() +
+                        ', ' +
+                        (255 - (i % 256)).toString() +
+                        ')';
 
-					if ((cp >= 0xD800) && (cp <= 0xDB7F)){
-						value = 'red';
-					}
-					else if ((cp >= 0xDB80) && (cp <= 0xDBFF)){
-						value = 'yellow';
-					}
-					else if ((cp >= 0xDC00) && (cp <= 0xDFFF)){
-						value = 'cyan';
-					}
-		
-					return value;
-				})
-				.on("click", function(event){
-					var coords = d3.mouse(this);
-					d3.select('#tooltip_click')
-						.remove()
-					;
-				
-					svg2.append("text")
-						.text( '0x' + "000000".substr(code_point.toString(16).length) + code_point.toString(16) + ', ' + code_point.toString() + ', ' + String.fromCodePoint(code_point))
-						.attr("x", function(d, i){
-							return coords[0] + 8;
-						})
-						.attr("y", function(d, i){
-							return Math.floor(coords[1]) + 64;
-						})
-						.attr("fill", "#ff0")
-						.attr("font-size", "24pt")
-						.attr("id", "tooltip_click")
-					; 
+                    var cp = plane_select * 65536 + i;
 
-					d3.select(this)
-						.attr("fill", "orange")
-					;
-				
-					create_font_svg();
-				})
-				.on("mouseover", function(event){
-					var coords = d3.mouse(this);
+                    if ((cp >= 0xD800) && (cp <= 0xDB7F)) {
+                        value = 'red';
+                    } else if ((cp >= 0xDB80) && (cp <= 0xDBFF)) {
+                        value = 'yellow';
+                    } else if ((cp >= 0xDC00) && (cp <= 0xDFFF)) {
+                        value = 'cyan';
+                    }
 
-					code_point = plane_select * 65536 + Math.floor(coords[1]/4)*256 + Math.floor(coords[0]/4);
-					code_point = Math.max(0, code_point);
+                    return value;
+                })
+                .on("click", function(event) {
+                    var coords = d3.mouse(this);
+                    d3.select('#tooltip_click')
+                        .remove();
 
-					svg2.append("text")
-						.text( '0x' + "000000".substr(code_point.toString(16).length) + code_point.toString(16) + ', ' + code_point.toString() + ', ' + String.fromCodePoint(code_point))
-						.attr("x", function(d, i){
-							return coords[0] + 8;
-						})
-						.attr("y", function(d, i){
-							return Math.floor(coords[1]) + 64;
-						})
-						.attr("fill", "#ff0")
-						.attr("font-size", "24pt")
-						.attr("id", "tooltip")
-					; 
+                    svg2.append("text")
+                        .text('0x' + "000000".substr(code_point.toString(16).length) + code_point.toString(16) + ', ' + code_point.toString() + ', ' + String.fromCodePoint(code_point))
+                        .attr("x", function(d, i) {
+                            return coords[0] + 8;
+                        })
+                        .attr("y", function(d, i) {
+                            return Math.floor(coords[1]) + 64;
+                        })
+                        .attr("fill", "#ff0")
+                        .attr("font-size", "24pt")
+                        .attr("id", "tooltip_click");
 
-					d3.select(this)
-						.attr("fill", "orange")
-					;    
-				})
-				.on("mouseout", function(d){
-					d3.select("#tooltip").remove();
-				})
-				.append("title")
-				.text(function(d, i) {
-					var start = plane_select * 65536;
-					return '0x' + "000000".substr(( start + i ).toString(16).length) + ( start + i ).toString(16) + ', ' + ( start + i ) + ', ' + String.fromCodePoint(start + i); 
-				})
-			;
+                    d3.select(this)
+                        .attr("fill", "orange");
+
+                    create_font_svg();
+                })
+                .on("mouseover", function(event) {
+                    var coords = d3.mouse(this);
+
+                    code_point = plane_select * 65536 + Math.floor(coords[1] / 4) * 256 + Math.floor(coords[0] / 4);
+                    code_point = Math.max(0, code_point);
+
+                    svg2.append("text")
+                        .text('0x' + "000000".substr(code_point.toString(16).length) + code_point.toString(16) + ', ' + code_point.toString() + ', ' + String.fromCodePoint(code_point))
+                        .attr("x", function(d, i) {
+                            return coords[0] + 8;
+                        })
+                        .attr("y", function(d, i) {
+                            return Math.floor(coords[1]) + 64;
+                        })
+                        .attr("fill", "#ff0")
+                        .attr("font-size", "24pt")
+                        .attr("id", "tooltip");
+
+                    d3.select(this)
+                        .attr("fill", "orange");
+                })
+                .on("mouseout", function(d) {
+                    d3.select("#tooltip").remove();
+                })
+                .append("title")
+                .text(function(d, i) {
+                    var start = plane_select * 65536;
+                    return '0x' + "000000".substr((start + i).toString(16).length) + (start + i).toString(16) + ', ' + (start + i) + ', ' + String.fromCodePoint(start + i);
+                });
 
             console.log('end build_plane()...');
-		};
-		/***/
+        };
+        /***/
 
-		/** build plane selection function */
-		function build_plane_selection(){
-			console.log('start build_plane_selection()...');
+        /** build plane selection function */
+        function build_plane_selection() {
+            console.log('start build_plane_selection()...');
 
-			/** Your code goes here */
-			var svg_width = 1500;
-			var svgRectSize = Math.floor((svg_width - 8 * 17) / 17);	
-			var x = 8, y = 8;
+            /** Your code goes here */
+            var svg_width = 1500;
+            var svgRectSize = Math.floor((svg_width - 8 * 17) / 17);
+            var x = 8,
+                y = 8;
 
-			var svg1 = d3.select('#planes')
-				.append('svg')
-				.attr('viewBox', `0 0 ${svg_width}  ${svgRectSize + y*2}`)
-				.attr('style', 'height: 100%; width: 100%')
+            var svg1 = d3.select('#planes')
+                .append('svg')
+                .attr('viewBox', `0 0 ${svg_width}  ${svgRectSize + y*2}`)
+                .attr('style', 'height: 100%; width: 100%')
                 .attr('id', 'svgplanes')
                 .attr("xmlns", 'http://www.w3.org/2000/svg')
                 .attr("xmlns:svg", 'http://www.w3.org/2000/svg')
-                .attr("xmlns:xlink", 'http://www.w3.org/1999/xlink')
-			;
+                .attr("xmlns:xlink", 'http://www.w3.org/1999/xlink');
 
-			var currentSelectPlane = null;
+            var currentSelectPlane = null;
 
-			svg1.selectAll('rect')
-				.data(unicode)
-				.enter()
-				.append("rect")
-				.attr('class', 'unicode_planes')
-				.classed('selected', function(d, i) {
-					if (i == plane_select) {
-						currentSelectPlane = d3.select(this);
-						return true;
-					}
-					return false;
-				})
-				.attr("id", function(d,i){
-					return plane_id + i;
-				})
-				.attr("x", function(d, i) {
-					return x + i * svgRectSize + (i) * x;
-				})
-				.attr("y", y)
-				.attr("width", svgRectSize)
-				.attr("height", svgRectSize)
-				.attr("fill", function(d, i) {
-					return 'rgb('
-						+ (0).toString()
-						+ ', '
-						+ (i % 17 * 16).toString()
-						+ ', '
-						+ (i % 17 * 16).toString()
-						+ ')';
-				})
-				.on('mousemove', function() {
-					var mouse = d3.mouse(this);
-					var xPosition = parseInt(mouse[0]);
-					var yPosition = parseInt(mouse[1]);
+            svg1.selectAll('rect')
+                .data(unicode)
+                .enter()
+                .append("rect")
+                .attr('class', 'unicode_planes')
+                .classed('selected', function(d, i) {
+                    if (i == plane_select) {
+                        currentSelectPlane = d3.select(this);
+                        return true;
+                    }
+                    return false;
+                })
+                .attr("id", function(d, i) {
+                    return plane_id + i;
+                })
+                .attr("x", function(d, i) {
+                    return x + i * svgRectSize + (i) * x;
+                })
+                .attr("y", y)
+                .attr("width", svgRectSize)
+                .attr("height", svgRectSize)
+                .attr("fill", function(d, i) {
+                    return 'rgb(' +
+                        (0).toString() +
+                        ', ' +
+                        (i % 17 * 16).toString() +
+                        ', ' +
+                        (i % 17 * 16).toString() +
+                        ')';
+                })
+                .on('mousemove', function() {
+                    var mouse = d3.mouse(this);
+                    var xPosition = parseInt(mouse[0]);
+                    var yPosition = parseInt(mouse[1]);
 
-					d3.select(`#${tooltip_planes_id}`).remove()
+                    d3.select(`#${tooltip_planes_id}`).remove()
 
-					svg1.append('text')
-						.attr('id', tooltip_planes_id)
+                    svg1.append('text')
+                        .attr('id', tooltip_planes_id)
                         .attr("x", xPosition + 24)
                         .attr("y", yPosition)
                         .attr("text-anchor", "middle")
@@ -436,144 +416,138 @@
                         .attr("font-size", "11px")
                         .attr("font-weight", "bold")
                         .attr("fill", "white")
-                        .text(xPosition + ', ' + yPosition)
-					;
-				})
-				.on('mouseout', function() {
-					d3.select(`#${tooltip_planes_id}`).remove();
-				})
-				.on('click', function(o_pe, d) {
-					plane_select = unicode.indexOf(o_pe);
+                        .text(xPosition + ', ' + yPosition);
+                })
+                .on('mouseout', function() {
+                    d3.select(`#${tooltip_planes_id}`).remove();
+                })
+                .on('click', function(o_pe, d) {
+                    plane_select = unicode.indexOf(o_pe);
 
-					currentSelectPlane.classed('selected', false);
- 
+                    currentSelectPlane.classed('selected', false);
+
                     currentSelectPlane = d3.select(`#${plane_id}${plane_select}`)
-                        .classed("selected", true)
-                    ;
+                        .classed("selected", true);
 
-					d3.select(`#${plane_now_id}`)
-						.html(`${d}, plane_select = ${plane_select}`)
-					;
+                    d3.select(`#${plane_now_id}`)
+                        .html(`${d}, plane_select = ${plane_select}`);
 
-					d3.select(`#svg`).remove();
- 
+                    d3.select(`#svg`).remove();
+
                     build_plane();
-				})
-			;
+                });
 
-			svg1.selectAll("text")
-                    .data(unicode)
-                    .enter()
-                    .append("text")
-                    .text(function(d){ return d; })
-                    .attr("x", function(d, i) {
-                        return  16 + i * svgRectSize + (i) * 8;
-                    })
-                    .attr("y", 32)
-                    .attr("fill", "#ff0")
-                    .attr("font-size", "12pt")
-            ;
+            svg1.selectAll("text")
+                .data(unicode)
+                .enter()
+                .append("text")
+                .text(function(d) {
+                    return d;
+                })
+                .attr("x", function(d, i) {
+                    return 16 + i * svgRectSize + (i) * 8;
+                })
+                .attr("y", 32)
+                .attr("fill", "#ff0")
+                .attr("font-size", "12pt");
 
-			console.log('end build_plane_selection()...');
-		};
-		/***/
-
-
-		/** main function */
-		d3.select(window)
-			.on('load', function(){
-				build_plane_selection();
-				build_plane();
+            console.log('end build_plane_selection()...');
+        };
+        /***/
 
 
-				/** autoload font data */
-				/** Your code goes here */
-				console.log('start autoload font data...')
-				d3.request('../hw01/SourceHanSerifTC-Heavy.ttf')
-					.responseType('arraybuffer')
-					.get(function(d){
-						openTypeFont = opentype.parse(d.response)
-						console.log('end autoload font data...')
-					})
-				;
+        /** main function */
+        d3.select(window)
+            .on('load', function() {
+                build_plane_selection();
+                build_plane();
+
+
+                /** autoload font data */
+                /** Your code goes here */
+                console.log('start autoload font data...')
+                d3.request('../hw01/SourceHanSerifTC-Heavy.ttf')
+                    .responseType('arraybuffer')
+                    .get(function(d) {
+                        openTypeFont = opentype.parse(d.response)
+                        console.log('end autoload font data...')
+                    });
                 /***/
 
 
-				/** font selection */
-				/** Your code goes here */
-				d3.select('#select-font')
-                    .on('change', function(){
-                            if(this.files[0].name.split('.').slice(-1)[0] != 'ttf'){
-                                return console.error('Not a valid ttf file');
-                            }
-                            var fr = new FileReader();
-                            fr.onload = function(){
-                                openTypeFont = opentype.parse(fr.result);
-                                console.log(openTypeFont);
-                            };
-                            fr.readAsArrayBuffer(this.files[0]);
-                        })
-                ;
+                /** font selection */
+                /** Your code goes here */
+                d3.select('#select-font')
+                    .on('change', function() {
+                        if (this.files[0].name.split('.').slice(-1)[0] != 'ttf') {
+                            return console.error('Not a valid ttf file');
+                        }
+                        var fr = new FileReader();
+                        fr.onload = function() {
+                            openTypeFont = opentype.parse(fr.result);
+                            console.log(openTypeFont);
+                        };
+                        fr.readAsArrayBuffer(this.files[0]);
+                    });
                 /***/
 
-				/** download svg text */
-				/** Your code goes here */
-				d3.select('#download-svg')
-                    .on('click', function(){
+                /** download svg text */
+                /** Your code goes here */
+                d3.select('#download-svg')
+                    .on('click', function() {
                         var a = d3.create('a')
-                                    .attr('href', URL.createObjectURL(new Blob([svgHTML], {type: 'text/plain'})))
-                                    .attr('download', 'output.svg')
-                        ;
+                            .attr('href', URL.createObjectURL(new Blob([svgHTML], {
+                                type: 'text/plain'
+                            })))
+                            .attr('download', 'output.svg');
                         a.node().click();
-                    })
-                ;
+                    });
                 /***/
-			})
-		;
+            });
 
-		var so = new ScoreOutputer("110598005");
-		so.installCSS(function(){
-			// 安裝 bootstrap 的 css，如果在 html 上方引用 bootstrap 5.1.1 的話就不用使用 installCSS ，注意一定要 bootstrap css 5.1.1 版
-			// installCSS 接收一個 callback 當作參數，作為成功安裝 bootstrap css 的回呼函式
-		
-			//加入項目，分數，完成狀況
-			//第一個參數為 項目名稱
-			//第2個參數為 項目分數
-			//第3個參數為 完成狀況，有完成 true/未完成 false
-			//有幾個項目就呼叫幾個 addChild
-			//addChild 要比 renderModal 先呼叫
-			so.addChild("字型檔手動讀取", 6, true);
-			so.addChild("字型檔自動讀取", 2, true);
-			so.addChild("字型描點", 2, true);
+        var so = new ScoreOutputer("110598005");
+        so.installCSS(function() {
+            // 安裝 bootstrap 的 css，如果在 html 上方引用 bootstrap 5.1.1 的話就不用使用 installCSS ，注意一定要 bootstrap css 5.1.1 版
+            // installCSS 接收一個 callback 當作參數，作為成功安裝 bootstrap css 的回呼函式
 
-			//產生自評表，參數如下所示
-			so.renderModal(
-				//1. 自評表插入位置 (預設 document.body)
-				document.body,
-				//2. 自評表背景 (預設紅色)
-				'rgba(100,45,58,1)', 
-				//3. 自評表文字顏色 (預設白色)
-				'white', 
-				//4. 自評表文字大小 (預設 14pt)
-				'15pt', 
-				//5. 自評表 checkbox 文字大小 (預設多少忘了)
-				'15px', 
-				//6. 自評表標題 (預設 "自我評分表")
-				'自我評分表'
-			);
-			
-			//設定下載按鈕 <-- 一定要呼叫這個函數，不然沒有下載功能
-			so.installDownloadBtn();
-			
-			//產生 "開啟自評表按鈕"
-			so.renderBtn(
-				//自評表按鈕插入位置
-				d3.select('#score-btn').node(),
-				//自評表按鈕文字
-				"開啟自評表"
-			);
-		});
-	</script>
+            //加入項目，分數，完成狀況
+            //第一個參數為 項目名稱
+            //第2個參數為 項目分數
+            //第3個參數為 完成狀況，有完成 true/未完成 false
+            //有幾個項目就呼叫幾個 addChild
+            //addChild 要比 renderModal 先呼叫
+            so.addChild("字型檔手動讀取", 6, true);
+            so.addChild("字型檔自動讀取", 2, true);
+            so.addChild("字型描點", 2, true);
+
+            //產生自評表，參數如下所示
+            so.renderModal(
+                //1. 自評表插入位置 (預設 document.body)
+                document.body,
+                //2. 自評表背景 (預設紅色)
+                'rgba(100,45,58,1)',
+                //3. 自評表文字顏色 (預設白色)
+                'white',
+                //4. 自評表文字大小 (預設 14pt)
+                '15pt',
+                //5. 自評表 checkbox 文字大小 (預設多少忘了)
+                '15px',
+                //6. 自評表標題 (預設 "自我評分表")
+                '自我評分表'
+            );
+
+            //設定下載按鈕 <-- 一定要呼叫這個函數，不然沒有下載功能
+            so.installDownloadBtn();
+
+            //產生 "開啟自評表按鈕"
+            so.renderBtn(
+                //自評表按鈕插入位置
+                d3.select('#score-btn').node(),
+                //自評表按鈕文字
+                "開啟自評表"
+            );
+        });
+    </script>
 
 </body>
 <!--  -->
